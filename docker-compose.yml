@@ -3,18 +3,24 @@ version: '3.1'
 
 services:
 
+  # docker run --name mysql-001 -p 3307:3306 -e MYSQL_ROOT_PASSWORD=123 -e MYSQL_USER=test -e MYSQL_PASSWORD=123 -e MYSQL_DATABASE=blog -d mysql:latest
+  # mysql -h 127.0.0.1 -P 3307 -u test -p
+
   db:
-    image: mysql
+    image: mysql:latest
+    container_name: mysql-002
     command: --default-authentication-plugin=mysql_native_password
     restart: always
     ports:
-      - 3307:3307
+      - 3307:3306
     environment:
       MYSQL_ROOT_PASSWORD: 123
-      MYSQL_DATABASE: 'blog'
+      MYSQL_DATABASE: blog
+      MYSQL_USER: test
+      MYSQL_PASSWORD: 123
 
   adminer:
     image: adminer
     restart: always
     ports:
-      - 8081:8081
+      - 8080:8080

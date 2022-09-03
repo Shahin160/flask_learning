@@ -1,0 +1,55 @@
+#after run flask db init and generate migrations folder
+# flask db migrate -m "Initial migration."
+
+
+# mysqlclient problem:
+
+# brew tap homebrew/core - bu komanda ilə əsas repository-ni əlavə etdik 
+
+# brew search mysql - bu komanda ilə mysql ilə bağlı olan package-ləri (formulaları) axtarırıq
+
+# brew install mysql - bu komanda ilə mysql db-ni cli ilə birlikdə yükləyirik
+
+# brew services start mysql - bu komanda ilə mysql daemon-u start edirik
+
+# migrations folderinde "versions" folder creaet edirik
+
+# env.py folderinde 
+        # from models import * 
+
+# mysql database bu formada qurulur
+
+# db:
+#    image: mysql:latest
+#    container_name: mysql-002
+#    command: --default-authentication-plugin=mysql_native_password
+#   restart: always
+#   ports:
+#     - 3307:3306
+#   environment:
+#     MYSQL_ROOT_PASSWORD: 123
+#     MYSQL_DATABASE: blog
+#     MYSQL_USER: test
+#     MYSQL_PASSWORD: 123
+
+# adminer:
+#   image: adminer
+#   restart: always
+#   ports:
+#     - 8080:8080
+
+#manual run docker
+# docker run --name mysql-001 -p 3307:3306 -e MYSQL_ROOT_PASSWORD=123 -e MYSQL_USER=test -e MYSQL_PASSWORD=123 -e MYSQL_DATABASE=blog -d mysql:latest
+# test connection to mysql
+# mysql -h 127.0.0.1 -P 3307 -u test -p
+
+
+# daha sonra flask-migrate doc esasen isler icra olunur
+# https://flask-migrate.readthedocs.io/en/latest/
+
+
+# yeni table elave etdikde ve ya cedvele elaveler etdikde
+        # flask db upgrade
+
+
+# flask shell - command terminalda .py test etmek ucun
