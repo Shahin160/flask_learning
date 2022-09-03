@@ -9,8 +9,8 @@ from wtforms.validators import DataRequired, Length, Email
 
 
 class ContactForm(FlaskForm):
-    full_name = StringField(label='Your Name', validators=[DataRequired(), Length(min=3, max=30)])
-    email = StringField(label='Email', validators=[DataRequired(), Email(), Length()])
+    full_name = StringField(label='Your Name', validators=[DataRequired(), Length(min=3, max=30)],render_kw={"placeholder": "Enter your name"})
+    email = StringField(label='Email', validators=[DataRequired(), Email(), Length(min=10)],render_kw={"placeholder": "Enter your email adress"})
     services = SelectField(label='Needed Services', choices=[("", 'Choose Services'),('ost', 'Online Store'), ('ecb', 'eCommerce Business'), ('des', 'UI/UX Design'), ('ose', 'Online Services')])
     budget = SelectField(label='Budget', choices=[("", 'Select Budget'),(1500, '1500$'), (2000, '2000$'), (2500, '2500$')])
     message = TextAreaField(label='Message', render_kw={"placeholder": "Your message here..."})
